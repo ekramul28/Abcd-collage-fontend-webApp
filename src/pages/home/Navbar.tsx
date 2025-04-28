@@ -233,7 +233,7 @@ export default function Navbar() {
             </DropdownMenu>
 
             {/* Theme toggle - hidden on smallest screens */}
-            <div className="hidden xs:block">
+            <div className="hidden md:block">
               <ThemeToggle />
             </div>
 

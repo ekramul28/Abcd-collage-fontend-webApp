@@ -50,17 +50,17 @@ const Hero = () => {
           className={`object-cover w-full h-full transition-opacity duration-1000 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
-          poster="/assets/images/campus-poster.jpg"
+          //   poster="/assets/videos/abcdvideo1.mp4"
         >
-          <source src="/assets/videos/campus-life.mp4" type="video/mp4" />
+          <source src="/assets/videos/abcdvideo1.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/60 to-purple-900/70"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-indigo-900/60 to-purple-900/70"></div> */}
 
         {/* Optional: Add a noise texture overlay for more visual interest */}
-        <div className="absolute inset-0 bg-[url('/assets/images/noise.png')] opacity-5 mix-blend-overlay"></div>
+        {/* <div className="absolute inset-0 bg-[url('/assets/images/noise.png')] opacity-5 mix-blend-overlay"></div> */}
       </div>
 
       {/* Hero Content */}
