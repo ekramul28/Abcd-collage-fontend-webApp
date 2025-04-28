@@ -1,5 +1,8 @@
+"use client"; // if you are using 'framer-motion' in Next.js app, add this at top!
+
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   GraduationCap,
   Facebook,
@@ -19,13 +22,24 @@ import { Input } from "@/components/ui/input";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <footer className="bg-background border-t">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: College Info */}
-          <div className="space-y-4">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
             <div className="flex items-center mb-6">
               <GraduationCap className="h-8 w-8 text-primary mr-2" />
               <span className="text-xl font-bold">College Management</span>
@@ -36,112 +50,65 @@ const Footer = () => {
               better future.
             </p>
             <div className="flex space-x-4 pt-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Youtube size={20} />
-              </a>
+              {[
+                { href: "https://facebook.com", icon: Facebook },
+                { href: "https://twitter.com", icon: Twitter },
+                { href: "https://instagram.com", icon: Instagram },
+                { href: "https://linkedin.com", icon: Linkedin },
+                { href: "https://youtube.com", icon: Youtube },
+              ].map(({ href, icon: Icon }, idx) => (
+                <a
+                  key={idx}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2: Quick Links */}
-          <div className="space-y-4">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/about"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  Courses
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/admissions"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  Admissions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/events"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  Events & News
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/academic-calendar"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  Academic Calendar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/scholarships"
-                  className="flex items-center text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  Scholarships
-                </Link>
-              </li>
+              {[
+                { href: "/about", label: "About Us" },
+                { href: "/courses", label: "Courses" },
+                { href: "/admissions", label: "Admissions" },
+                { href: "/events", label: "Events & News" },
+                { href: "/academic-calendar", label: "Academic Calendar" },
+                { href: "/scholarships", label: "Scholarships" },
+              ].map(({ href, label }, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={href}
+                    className="flex items-center text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <ChevronRight className="h-4 w-4 mr-2" />
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 3: Contact Information */}
-          <div className="space-y-4">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
             <h3 className="text-lg font-semibold">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start text-muted-foreground">
@@ -153,6 +120,10 @@ const Footer = () => {
               <li className="flex items-center text-muted-foreground">
                 <Phone className="h-5 w-5 mr-2 shrink-0" />
                 <span>+1 (123) 456-7890</span>
+              </li>
+              <li className="flex items-center text-muted-foreground">
+                <Phone className="h-5 w-5 mr-2 shrink-0" />
+                <span>+1 (987) 654-3210</span>
               </li>
               <li className="flex items-center text-muted-foreground">
                 <Mail className="h-5 w-5 mr-2 shrink-0" />
@@ -170,10 +141,16 @@ const Footer = () => {
                 Sunday: Closed
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 4: Newsletter */}
-          <div className="space-y-4">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
             <h3 className="text-lg font-semibold">Subscribe to Newsletter</h3>
             <p className="text-sm text-muted-foreground">
               Stay updated with our latest news, events, and announcements.
@@ -199,7 +176,7 @@ const Footer = () => {
                 </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
