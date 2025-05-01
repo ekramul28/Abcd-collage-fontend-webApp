@@ -35,29 +35,29 @@ export default function Navbar() {
 
   const navigation = [
     {
-      name: "Dashboard",
-      href: "/dashboard",
-      icon: <FileText className="h-4 w-4 mr-2" />,
-    },
-    {
-      name: "Students",
-      href: "/students",
+      name: "About Us",
+      href: "/about",
       icon: <Users className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Courses",
-      href: "/courses",
+      name: "Gallery",
+      href: "/gallery",
       icon: <Book className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Attendance",
-      href: "/attendance",
+      name: "Contact",
+      href: "/contact",
       icon: <Calendar className="h-4 w-4 mr-2" />,
     },
     {
       name: "Grades",
       href: "/grades",
       icon: <GraduationCap className="h-4 w-4 mr-2" />,
+    },
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+      icon: <FileText className="h-4 w-4 mr-2" />,
     },
   ];
 
@@ -237,8 +237,12 @@ export default function Navbar() {
               <ThemeToggle />
             </div>
 
+            <Link href={"/login"}>
+              <Button>Login</Button>
+            </Link>
+
             {/* User dropdown */}
-            <DropdownMenu>
+            {/* <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
@@ -279,7 +283,7 @@ export default function Navbar() {
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
 
             {/* Mobile menu */}
             <div className="md:hidden">
