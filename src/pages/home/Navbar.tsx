@@ -29,33 +29,34 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
 
   const navigation = [
     {
-      name: "About Us",
+      name: "আমাদের সম্পর্কে",
       href: "/about",
       icon: <Users className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Gallery",
+      name: "গ্যালারি",
       href: "/gallery",
       icon: <Book className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Contact",
+      name: "যোগাযোগ",
       href: "/contact",
       icon: <Calendar className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Grades",
+      name: "গ্রেডসমূহ",
       href: "/grades",
       icon: <GraduationCap className="h-4 w-4 mr-2" />,
     },
     {
-      name: "Dashboard",
+      name: "ড্যাশবোর্ড",
       href: "/dashboard",
       icon: <FileText className="h-4 w-4 mr-2" />,
     },
@@ -67,10 +68,19 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center flex-shrink-0">
-              <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="ml-2 text-xl font-bold">College Management</span>
+              <Image
+                src="/assets/images/logo.png"
+                alt="logo"
+                width={1000}
+                height={1000}
+                className="object-contain w-14 h-14"
+              />
+              <span className="ml-2 text-xl font-bold ">A.B.C.D College</span>
             </Link>
+          </div>
 
+          {/* Right side items */}
+          <div className="flex items-center space-x-2">
             {/* Desktop Navigation */}
             <div className="hidden md:ml-8 md:flex md:space-x-2">
               {navigation.map((item) =>
@@ -167,70 +177,6 @@ export default function Navbar() {
                 )
               )}
             </div>
-          </div>
-
-          {/* Right side items */}
-          <div className="flex items-center space-x-2">
-            {/* Notifications dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-[280px] sm:w-[350px] md:w-[400px]"
-              >
-                <DropdownMenuLabel>Notifications</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <div className="max-h-[50vh] overflow-y-auto">
-                  <DropdownMenuItem className="py-3 cursor-pointer">
-                    <div className="w-full">
-                      <p className="font-medium">New student registration</p>
-                      <p className="text-sm text-muted-foreground">
-                        John Doe has registered for Computer Science course
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        2 hours ago
-                      </p>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="py-3 cursor-pointer">
-                    <div className="w-full">
-                      <p className="font-medium">Grade update</p>
-                      <p className="text-sm text-muted-foreground">
-                        Mid-term grades have been posted for Mathematics
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Yesterday
-                      </p>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="py-3 cursor-pointer">
-                    <div className="w-full">
-                      <p className="font-medium">System maintenance</p>
-                      <p className="text-sm text-muted-foreground">
-                        The system will be down for maintenance on Sunday
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        3 days ago
-                      </p>
-                    </div>
-                  </DropdownMenuItem>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="justify-center cursor-pointer">
-                  <Link
-                    href="/notifications"
-                    className="text-center w-full text-primary"
-                  >
-                    View all notifications
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
 
             {/* Theme toggle - hidden on smallest screens */}
             <div className="hidden md:block">
