@@ -79,7 +79,7 @@ export default function AboutUs() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4 items-center">
             <Image
-              src="https://via.placeholder.com/150x150?text=Principal"
+              src=""
               alt="Principal"
               height={200}
               width={200}
