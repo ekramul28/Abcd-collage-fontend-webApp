@@ -1,4 +1,5 @@
-"use client"; // if you are using 'framer-motion' in Next.js app, add this at top!
+/* eslint-disable react/no-unescaped-entities */
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -18,6 +19,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -29,10 +31,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-background border-t">
-      {/* Main Footer Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Column 1: College Info */}
+          {/* Column 1: কলেজ ইনফো */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -41,22 +42,36 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center mb-6">
-              <GraduationCap className="h-8 w-8 text-primary mr-2" />
-              <span className="text-xl font-bold">College Management</span>
+              <Link href="/" className="flex items-center flex-shrink-0">
+                <Image
+                  src="/assets/images/logo.png"
+                  alt="logo"
+                  width={1000}
+                  height={1000}
+                  className="object-contain w-14 h-14"
+                />
+                <span className="ml-2 text-xl font-bold ">এ.বি.সি.ডি কলেজ</span>
+              </Link>
             </div>
             <p className="text-muted-foreground text-sm">
-              Providing quality education and academic excellence since 1995.
-              Our mission is to empower students with knowledge and skills for a
-              better future.
+              ২০০০ সালের শেষের দিকে যশোর জেলার চৌগাছা উপজেলার দেবীপুর গ্রামে,
+              সবুজে ঘেরা মনোরম পরিবেশে ২ একর জমির উপর প্রতিষ্ঠিত হয় এ.বি.সি.ডি
+              কলেজ। হাকিমপুর ইউনিয়নের প্রাক্তন চেয়ারম্যান ও বীর মুক্তিযোদ্ধা
+              প্রয়াত জনাব আজিজুর রহমান কলেজের প্রতিষ্ঠাতা সভাপতি ছিলেন। আরাজী
+              সুলতানপুর, বকশিপুর, চাকলা ও দেবীপুর – এই চার এলাকার প্রথম অক্ষর
+              নিয়ে কলেজের নামকরণ করা হয় "এ.বি.সি.ডি কলেজ"।
             </p>
             <div className="flex space-x-4 pt-4">
               {[
-                { href: "https://facebook.com", icon: Facebook },
-                { href: "https://twitter.com", icon: Twitter },
-                { href: "https://instagram.com", icon: Instagram },
-                { href: "https://linkedin.com", icon: Linkedin },
-                { href: "https://youtube.com", icon: Youtube },
-              ].map(({ href, icon: Icon }, idx) => (
+                {
+                  Icon: Facebook,
+                  href: "https://web.facebook.com/abcdcollege.chowgacha",
+                },
+                { Icon: Twitter, href: "https://twitter.com" },
+                { Icon: Instagram, href: "https://instagram.com" },
+                { Icon: Linkedin, href: "https://linkedin.com" },
+                { Icon: Youtube, href: "https://www.youtube.com/ABCDCollege" },
+              ].map(({ Icon, href }, idx) => (
                 <a
                   key={idx}
                   href={href}
@@ -70,7 +85,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: কুইক লিংকস */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -78,15 +93,16 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">দ্রুত লিংক</h3>
             <ul className="space-y-2 text-sm">
               {[
-                { href: "/about", label: "About Us" },
-                { href: "/courses", label: "Courses" },
-                { href: "/admissions", label: "Admissions" },
-                { href: "/events", label: "Events & News" },
-                { href: "/academic-calendar", label: "Academic Calendar" },
-                { href: "/scholarships", label: "Scholarships" },
+                { href: "/", label: "হোম" },
+                { href: "/about", label: "আমাদের সম্পর্কে" },
+                { href: "/admissions", label: "ভর্তি তথ্য" },
+                { href: "/events", label: "ইভেন্ট ও সংবাদ" },
+                { href: "/academic-calendar", label: "একাডেমিক ক্যালেন্ডার" },
+                { href: "/gallery", label: "গ্যালারি" },
+                { href: "/contact", label: "যোগাযোগ" },
               ].map(({ href, label }, idx) => (
                 <li key={idx}>
                   <Link
@@ -101,7 +117,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Column 3: Contact Information */}
+          {/* Column 3: যোগাযোগ */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -109,41 +125,38 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <h3 className="text-lg font-semibold">যোগাযোগ করুন</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start text-muted-foreground">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 shrink-0" />
-                <span>
-                  123 Education Street, Campus Area, Academic City, 12345
-                </span>
+                <span>এ. বি. সি. ডি কলেজ চৌগাছা, যশোর , বাংলাদেশ </span>
               </li>
+
               <li className="flex items-center text-muted-foreground">
                 <Phone className="h-5 w-5 mr-2 shrink-0" />
-                <span>+1 (123) 456-7890</span>
-              </li>
-              <li className="flex items-center text-muted-foreground">
-                <Phone className="h-5 w-5 mr-2 shrink-0" />
-                <span>+1 (987) 654-3210</span>
+                <span>+8801711010915</span>
               </li>
               <li className="flex items-center text-muted-foreground">
                 <Mail className="h-5 w-5 mr-2 shrink-0" />
-                <span>info@collegemanagement.edu</span>
+                <span>abcdcollege@ymail.com</span>
               </li>
             </ul>
 
             <div className="pt-3">
-              <h4 className="text-sm font-medium mb-2">Opening Hours</h4>
+              <h4 className="text-sm font-medium mt-4 mb-2">
+                এ. বি. সি. ডি কলেজ টাইম
+              </h4>
               <p className="text-sm text-muted-foreground">
-                Monday - Friday: 8:00 AM - 8:00 PM
+                রবি - বৃহস্পতিবার: সকাল ৯টা - বিকেল ৪টা
                 <br />
-                Saturday: 9:00 AM - 5:00 PM
+                শুক্রবার: বন্ধ
                 <br />
-                Sunday: Closed
+                শনিবার (কখনও কখনও ক্লাস থাকতে পারে): সকাল ৯টা - দুপুর ১টা
               </p>
             </div>
           </motion.div>
 
-          {/* Column 4: Newsletter */}
+          {/* Column 4: নিউজলেটার */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
@@ -151,28 +164,30 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold">Subscribe to Newsletter</h3>
+            <h3 className="text-lg font-semibold">
+              নিউজলেটারে সাবস্ক্রাইব করুন
+            </h3>
             <p className="text-sm text-muted-foreground">
-              Stay updated with our latest news, events, and announcements.
+              আমাদের সর্বশেষ খবর ও ইভেন্ট জানতে সাবস্ক্রাইব করুন।
             </p>
 
             <div className="space-y-2">
               <Input
                 type="email"
-                placeholder="Your email address"
+                placeholder="আপনার ইমেইল লিখুন"
                 className="bg-background"
               />
-              <Button className="w-full">Subscribe</Button>
+              <Button className="w-full">সাবস্ক্রাইব</Button>
             </div>
 
             <div className="pt-4">
-              <h4 className="text-sm font-medium mb-2">Student Portal</h4>
+              <h4 className="text-sm font-medium mb-2">স্টুডেন্ট পোর্টাল</h4>
               <div className="space-x-2">
                 <Button variant="outline" asChild size="sm">
-                  <Link href="/auth/login">Login</Link>
+                  <Link href="/auth/login">লগইন</Link>
                 </Button>
                 <Button variant="outline" asChild size="sm">
-                  <Link href="/auth/register">Register</Link>
+                  <Link href="/auth/register">রেজিস্টার</Link>
                 </Button>
               </div>
             </div>
@@ -180,12 +195,13 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Footer */}
+      {/* নিচের ফুটার অংশ */}
       <div className="border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © {currentYear} College Management System. All rights reserved.
+              © {currentYear} যশোর কলেজ ম্যানেজমেন্ট সিস্টেম। সর্বস্বত্ব
+              সংরক্ষিত।
             </div>
 
             <div className="flex space-x-6 text-sm">
@@ -193,19 +209,19 @@ const Footer = () => {
                 href="/privacy-policy"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                Privacy Policy
+                প্রাইভেসি পলিসি
               </Link>
               <Link
                 href="/terms-of-service"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                Terms of Service
+                পরিষেবার শর্তাবলী
               </Link>
               <Link
                 href="/accessibility"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                Accessibility
+                অ্যাক্সেসিবিলিটি
               </Link>
             </div>
           </div>

@@ -81,7 +81,7 @@ export default function Navbar() {
                 height={1000}
                 className="object-contain w-14 h-14"
               />
-              <span className="ml-2 text-xl font-bold ">A.B.C.D College</span>
+              <span className="ml-2 text-xl font-bold ">এ.বি.সি.ডি কলেজ</span>
             </Link>
           </div>
 
