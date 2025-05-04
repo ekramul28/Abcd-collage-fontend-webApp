@@ -7,11 +7,11 @@ import CTASection from "@/pages/home/CTASection";
 import NoticeBoard from "@/pages/home/Noticeboard";
 import PrincipalMessageSection from "@/pages/home/CollegeCalendarSection";
 import LatestNewsSection from "@/pages/home/LatestNewsSection";
+import MainLayout from "@/components/layout/MainLayout";
 
 export default function Home() {
   return (
     <main className="">
-      <Navbar />
       <Hero />
       <About />
       <PrincipalMessageSection />
@@ -19,7 +19,6 @@ export default function Home() {
       <UpcomingEvents />
       <NoticeBoard />
       <CTASection />
-      <Footer />
     </main>
   );
 }

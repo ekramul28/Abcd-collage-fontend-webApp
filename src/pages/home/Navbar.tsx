@@ -15,6 +15,7 @@ import {
   Menu,
   Settings,
   ChevronDown,
+  Home,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navigation = [
+    {
+      name: "হোম",
+      href: "/",
+      icon: <Home className="h-4 w-4 mr-2" />,
+    },
     {
       name: "আমাদের সম্পর্কে",
       href: "/about",

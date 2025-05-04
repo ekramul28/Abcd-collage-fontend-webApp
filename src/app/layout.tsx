@@ -4,6 +4,8 @@ import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
+import MainLayout from "@/components/layout/MainLayout";
+
 const hindSiliguri = Hind_Siliguri({
   variable: "--font-hind",
   subsets: ["latin"],
@@ -38,7 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MainLayout>{children}</MainLayout>
         </ThemeProvider>
       </body>
     </html>
