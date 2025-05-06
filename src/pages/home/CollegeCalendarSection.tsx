@@ -1,80 +1,117 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-require-imports */
+import React, { useEffect, useState } from "react";
+import { Calendar, dateFnsLocalizer, Event } from "react-big-calendar";
+import format from "date-fns/format";
+import parse from "date-fns/parse";
+import startOfWeek from "date-fns/startOfWeek";
+import getDay from "date-fns/getDay";
+import addDays from "date-fns/addDays";
+import startOfMonth from "date-fns/startOfMonth";
+import endOfMonth from "date-fns/endOfMonth";
+import isFriday from "date-fns/isFriday";
+import eachDayOfInterval from "date-fns/eachDayOfInterval";
+import isSameDay from "date-fns/isSameDay";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import React from "react";
-import { motion } from "framer-motion";
+const locales = {
+  "en-US": require("date-fns/locale/en-US"),
+};
 
-// Fake data for now (to be replaced by real backend data later)
-const calendarData = [
-  { date: "28 April 2025", day: "Today", status: "Class Started" },
-  { date: "29 April 2025", day: "Tomorrow", status: "Class Started" },
-  { date: "30 April 2025", day: "Wednesday", status: "Exam Scheduled" },
-  { date: "1 May 2025", day: "Thursday", status: "Holiday" },
-  { date: "2 May 2025", day: "Friday", status: "Project Due" },
-];
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
-// Calendar Item Component
-const CalendarItem = ({
-  date,
-  day,
-  status,
-}: {
-  date: string;
-  day: string;
-  status: string;
-}) => (
-  <motion.div
-    className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
-    variants={fadeInUp}
-  >
-    <h3 className="text-xl font-semibold text-primary mb-2">{day}</h3>
-    <p className="text-gray-600 text-sm mb-2">{date}</p>
-    <p className="text-sm text-gray-500">{status}</p>
-  </motion.div>
-);
-
-// College Calendar Section
 const CollegeCalendarSection = () => {
-  return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-semibold text-center mb-8"
-        >
-          College Calendar
-        </motion.h2>
+  const [events, setEvents] = useState<Event[]>([]);
 
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {calendarData.map((event, index) => (
-            <CalendarItem
-              key={index}
-              date={event.date}
-              day={event.day}
-              status={event.status}
-            />
-          ))}
-        </motion.div>
+  useEffect(() => {
+    // Example government holidays (you can replace or load from API)
+    const governmentHolidays: Event[] = [
+      {
+        title: "বিজয় দিবস (Victory Day)",
+        start: new Date(2025, 11, 16),
+        end: new Date(2025, 11, 16),
+        allDay: true,
+        resource: { isHoliday: true, type: "gov" },
+      },
+      {
+        title: "স্বাধীনতা দিবস (Independence Day)",
+        start: new Date(2025, 2, 26),
+        end: new Date(2025, 2, 26),
+        allDay: true,
+        resource: { isHoliday: true, type: "gov" },
+      },
+    ];
+
+    // Generate Fridays off for May 2025
+    const fridayEvents: Event[] = eachDayOfInterval({
+      start: startOfMonth(new Date(2025, 4)),
+      end: endOfMonth(new Date(2025, 4)),
+    })
+      .filter((date) => isFriday(date))
+      .map((friday) => ({
+        title: "শুক্রবার ছুটি (Friday Off)",
+        start: friday,
+        end: friday,
+        allDay: true,
+        resource: { isHoliday: true, type: "friday" },
+      }));
+
+    // Combine with your custom college events
+    const collegeEvents: Event[] = [
+      {
+        title: "Orientation Program",
+        start: new Date(2025, 4, 10, 10, 0),
+        end: new Date(2025, 4, 10, 12, 0),
+      },
+      {
+        title: "Semester Final Exam",
+        start: new Date(2025, 4, 20),
+        end: new Date(2025, 4, 25),
+      },
+    ];
+
+    setEvents([...collegeEvents, ...fridayEvents, ...governmentHolidays]);
+  }, []);
+
+  // Color different holidays differently
+  const eventStyleGetter = (event: Event) => {
+    if (event.resource?.isHoliday) {
+      const color = event.resource.type === "gov" ? "#2563eb" : "#dc2626"; // Blue for gov, red for Friday
+      return {
+        style: {
+          backgroundColor: color,
+          borderRadius: "4px",
+          color: "white",
+          border: "none",
+          padding: "4px",
+        },
+      };
+    }
+    return {};
+  };
+
+  return (
+    <section className="px-4 py-10">
+      <h2 className="text-3xl font-bold mb-6 text-center">কলেজ ক্যালেন্ডার</h2>
+      <div className="max-w-5xl mx-auto shadow-lg rounded-lg p-4 bg-white">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          views={["month", "week", "day", "agenda"]}
+          style={{ height: 500 }}
+          eventPropGetter={eventStyleGetter}
+        />
       </div>
     </section>
   );
 };
 
-const PrincipalAndCalendar = () => {
-  return (
-    <div className="space-y-16">
-      <PrincipalMessageSection />
-      <CollegeCalendarSection />
-    </div>
-  );
-};
-
-export default PrincipalAndCalendar;
+export default CollegeCalendarSection;

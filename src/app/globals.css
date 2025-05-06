@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* In your global CSS if needed */
+.rbc-calendar {
+  font-family: "Inter", sans-serif;
+}
+
+.rbc-event {
+  background-color: #1d4ed8;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
 @font-face {
   font-family: "HindSiliguri";
   src: url("/fonts/HindSiliguri-Light.ttf") format("truetype");

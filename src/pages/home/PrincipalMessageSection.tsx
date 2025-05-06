@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import React from "react";
+import CollegeCalendarSection from "./CollegeCalendarSection";
 
 const PrincipalMessageSection = () => {
   // Fade-in animation
@@ -11,8 +12,8 @@ const PrincipalMessageSection = () => {
   };
 
   return (
-    <div className="  py-20">
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex container mx-auto px-4 sm:px-6 lg:px-8 gap-2 py-20">
+      <section className=" flex-1/2 ">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
@@ -72,6 +73,9 @@ const PrincipalMessageSection = () => {
           </div>
         </motion.div>
       </section>
+      <div className="flex-1/2">
+        <CollegeCalendarSection />
+      </div>
     </div>
   );
 };
