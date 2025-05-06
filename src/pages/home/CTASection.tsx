@@ -11,8 +11,14 @@ const fadeInUp = {
 
 const CTASection = () => {
   return (
-    <section className="bg-gradient-to-r from-primary to-secondary py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="relative bg-cover bg-center py-16"
+      style={{
+        backgroundImage: "url('/path-to-your-college-background.jpg')", // Replace with your college-related image path
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.h2
             variants={fadeInUp}
@@ -21,7 +27,7 @@ const CTASection = () => {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl font-semibold text-white mb-6"
           >
-            Ready to Take the Next Step?
+            আপনার শিক্ষা জীবনে পরবর্তী ধাপ নিতে প্রস্তুত?
           </motion.h2>
 
           <motion.p
@@ -29,10 +35,10 @@ const CTASection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-lg sm:text-xl text-muted-foreground mb-8"
+            className="text-lg sm:text-xl text-white mb-8"
           >
-            Join our community, stay ahead of the curve, and take control of
-            your future. Get started with us today!
+            আমাদের কলেজে যোগ দিন, আপনার ভবিষ্যত গড়ুন, এবং শিক্ষার নতুন সম্ভাবনার
+            সন্ধান করুন। আজই আমাদের সাথে শুরু করুন!
           </motion.p>
 
           <motion.div
@@ -43,7 +49,7 @@ const CTASection = () => {
             className="flex justify-center gap-4"
           >
             <Button size="lg" className="px-6 py-3 text-lg sm:text-xl">
-              Join Now
+              এখনই ভর্তি হতে আবেদন করুন
             </Button>
 
             <Button
@@ -51,7 +57,7 @@ const CTASection = () => {
               size="lg"
               className="px-6 py-3 text-lg sm:text-xl"
             >
-              Learn More
+              আরও জানুন
             </Button>
           </motion.div>
         </div>
