@@ -1,66 +1,58 @@
-"use client"; // Important for motion animations in Next.js 13+ app directory
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react"; // Icon for "Read more" links or other actions
-import { jsPDF } from "jspdf"; // Import jsPDF for PDF generation
+import { ChevronRight } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+// Notices with PDF URLs
 const notices = [
   {
-    title: "New Semester Schedule Released",
+    title: "নতুন সেমিস্টার সময়সূচি প্রকাশিত হয়েছে",
     description:
-      "The new semester schedule is now available for download. Please check the academic calendar for all important dates.",
+      "নতুন সেমিস্টারের সময়সূচি এখন ডাউনলোডের জন্য উপলব্ধ। অনুগ্রহ করে সমস্ত গুরুত্বপূর্ণ তারিখের জন্য একাডেমিক ক্যালেন্ডার দেখুন।",
     link: "/semesters/schedule",
-    pdfContent: "This is the content for the Semester Schedule notice.",
+    pdfUrl: "/pdfs/semester-schedule.pdf",
   },
   {
-    title: "Student Portal Maintenance",
+    title: "স্টুডেন্ট পোর্টাল রক্ষণাবেক্ষণ",
     description:
-      "The student portal will undergo maintenance this weekend. It will be unavailable from 10:00 PM on Friday to 6:00 AM on Saturday.",
+      "স্টুডেন্ট পোর্টালের রক্ষণাবেক্ষণ কাজ এই সপ্তাহান্তে চলবে। শুক্রবার রাত ১০টা থেকে শনিবার সকাল ৬টা পর্যন্ত এটি ব্যবহারযোগ্য থাকবে না।",
     link: "/maintenance",
-    pdfContent:
-      "This is the content for the Student Portal Maintenance notice.",
+    pdfUrl: "/pdfs/portal-maintenance.pdf",
   },
   {
-    title: "Join the Annual Sports Day",
+    title: "বার্ষিক স্পোর্টস ডে-তে যোগ দিন",
     description:
-      "Our annual sports day is just around the corner! Register for the event and get ready to show your skills.",
+      "আমাদের বার্ষিক স্পোর্টস ডে আসছে! ইভেন্টের জন্য রেজিস্ট্রেশন করুন এবং আপনার দক্ষতা প্রদর্শনের জন্য প্রস্তুত হন।",
     link: "/events/sports-day",
-    pdfContent: "This is the content for the Sports Day notice.",
+    pdfUrl: "/pdfs/sports-day.pdf",
   },
   {
-    title: "Career Counseling Session",
+    title: "ক্যারিয়ার কাউন্সেলিং সেশন",
     description:
-      "We are hosting a career counseling session for all students this Friday. Don't miss out on this opportunity to boost your career prospects.",
+      "এই শুক্রবার আমরা একটি ক্যারিয়ার কাউন্সেলিং সেশনের আয়োজন করেছি। এটি আপনার ক্যারিয়ার উন্নয়নে সহায়ক হবে।",
     link: "/events/career-counseling",
-    pdfContent: "This is the content for the Career Counseling notice.",
+    pdfUrl: "/pdfs/career-counseling.pdf",
   },
 ];
 
-const generatePDF = (title: string, content: string) => {
-  const doc = new jsPDF();
-  doc.text("Notice Title: " + title, 10, 10);
-  doc.text("Notice Content: " + content, 10, 20);
-  doc.save(`${title}.pdf`);
-};
-
 const NoticeBoard = () => {
   return (
-    <section className=" py-12">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-semibold text-center mb-8"
+          className="text-3xl sm:text-4xl font-bold text-center mb-10 text-primary"
         >
-          Latest Notices
+          সর্বশেষ নোটিশ
         </motion.h2>
 
         <motion.div
@@ -68,12 +60,12 @@ const NoticeBoard = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-6"
         >
           {notices.map((notice, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-shadow duration-300 border"
             >
               <h3 className="text-xl font-semibold text-primary mb-2">
                 {notice.title}
@@ -81,20 +73,33 @@ const NoticeBoard = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 {notice.description}
               </p>
-              <div className="flex justify-between items-center">
+
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <a
                   href={notice.link}
-                  className="flex items-center text-primary hover:text-primary-dark transition-colors"
+                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition"
                 >
-                  <span className="text-sm">Read More</span>
-                  <ChevronRight className="h-4 w-4 ml-2" />
+                  বিস্তারিত দেখুন
+                  <ChevronRight className="h-4 w-4 ml-1" />
                 </a>
-                <button
-                  onClick={() => generatePDF(notice.title, notice.pdfContent)}
-                  className="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg"
-                >
-                  Download PDF
-                </button>
+
+                <div className="flex gap-2">
+                  <a
+                    href={notice.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md text-gray-800 border"
+                  >
+                    PDF দেখুন
+                  </a>
+                  <a
+                    href={notice.pdfUrl}
+                    download
+                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                  >
+                    ডাউনলোড করুন
+                  </a>
+                </div>
               </div>
             </div>
           ))}

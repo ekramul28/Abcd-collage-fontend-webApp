@@ -1,34 +1,33 @@
-"use client"; // Important for motion animations in Next.js 13+ app directory
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button"; // Ensure this path is correct
+import { Button } from "@/components/ui/button";
 
-// Sample Event Data
 const events = [
   {
     id: 1,
-    title: "Annual Science Conference",
+    title: "বার্ষিক বিজ্ঞান সম্মেলন",
     date: "2025-06-15",
     description:
-      "Join us for the annual science conference, where experts from around the world gather to discuss cutting-edge innovations in science and technology.",
+      "বিশ্বব্যাপী বিজ্ঞান ও প্রযুক্তির উদ্ভাবন নিয়ে আলোচনা করার জন্য বিশেষজ্ঞদের একত্রিত করার একটি দুর্দান্ত প্ল্যাটফর্ম।",
     link: "/events/annual-science-conference",
   },
   {
     id: 2,
-    title: "Career Fair & Networking",
+    title: "ক্যারিয়ার ফেয়ার ও নেটওয়ার্কিং",
     date: "2025-07-10",
     description:
-      "A fantastic opportunity for students to meet industry professionals, network, and explore potential career opportunities.",
+      "শিক্ষার্থীদের জন্য শিল্প পেশাদারদের সাথে দেখা ও পেশাগত নেটওয়ার্ক গড়ে তোলার একটি চমৎকার সুযোগ।",
     link: "/events/career-fair",
   },
   {
     id: 3,
-    title: "Coding Bootcamp: Learn JavaScript",
+    title: "কোডিং বুটক্যাম্প: জাভাস্ক্রিপ্ট শেখা",
     date: "2025-08-01",
     description:
-      "Get ready to boost your coding skills with our hands-on JavaScript bootcamp. Perfect for beginners and intermediate learners.",
+      "শুরুর থেকে মধ্যবর্তী স্তরের শিক্ষার্থীদের জন্য হাতে-কলমে জাভাস্ক্রিপ্ট শেখার একটি কার্যকরী প্রশিক্ষণ।",
     link: "/events/coding-bootcamp",
   },
 ];
@@ -40,19 +39,19 @@ const fadeInUp = {
 
 const UpcomingEvents = () => {
   return (
-    <section className="bg-background py-12">
+    <section className=" pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-3xl font-semibold text-center mb-8"
+          className="text-4xl font-bold text-center text-primary mb-12"
         >
-          Upcoming Events
+          আসন্ন ইভেন্টসমূহ
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event) => (
             <motion.div
               key={event.id}
@@ -60,30 +59,24 @@ const UpcomingEvents = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-white shadow-lg rounded-lg overflow-hidden p-4 flex flex-col"
+              className="bg-white shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl p-6 flex flex-col justify-between border border-gray-100"
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <Calendar className="h-6 w-6 text-primary" />
-                <span className="text-sm text-muted-foreground">
-                  {new Date(event.date).toLocaleDateString()}
-                </span>
+              <div className="mb-4 flex items-center space-x-2 text-muted-foreground text-sm">
+                <Calendar className="w-5 h-5 text-primary" />
+                <span>{new Date(event.date).toLocaleDateString("bn-BD")}</span>
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
                 {event.title}
               </h3>
 
-              <p className="text-sm text-muted-foreground flex-grow mb-4">
+              <p className="text-base text-gray-600 mb-6">
                 {event.description}
               </p>
 
-              <Button
-                asChild
-                variant="outline"
-                className="self-start w-full md:w-auto mt-auto"
-              >
-                <a href={event.link} className="text-primary">
-                  Learn More
+              <Button asChild variant="outline" className="w-full">
+                <a href={event.link} className="text-sm font-medium">
+                  বিস্তারিত দেখুন
                 </a>
               </Button>
             </motion.div>
