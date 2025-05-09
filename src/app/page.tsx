@@ -6,6 +6,7 @@ import NoticeBoard from "@/pages/home/Noticeboard";
 
 import LatestNewsSection from "@/pages/home/LatestNewsSection";
 import PrincipalMessageSection from "@/pages/home/PrincipalMessageSection";
+import Teachers from "@/pages/home/Teachers";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <PrincipalMessageSection />
+      <Teachers />
       <LatestNewsSection />
       <UpcomingEvents />
       <NoticeBoard />

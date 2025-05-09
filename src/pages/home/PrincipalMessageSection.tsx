@@ -13,7 +13,7 @@ const PrincipalMessageSection = () => {
   };
 
   return (
-    <div className="bg-[#6D28D9] dark:bg-[#0F172A] border ">
+    <div className="bg-[#6D28D9] dark:bg-[#121a2c] border ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex flex-col lg:flex-row justify-center items-center gap-8 ">
           {/* Principal Section */}
@@ -44,7 +44,7 @@ const PrincipalMessageSection = () => {
               </div>
 
               {/* Text Section */}
-              <div className="lg:flex-1 space-y-6 text-center border-l-2 pl-3 text-white lg:text-left">
+              <div className="lg:flex-1 space-y-6 text-center border-l-2 p-6 pl-6 border-amber-300 text-white lg:text-left">
                 <div className="w-[80%]">
                   <p className="text-lg leading-relaxed">
                     শিক্ষা একটি জাতির উন্নয়নের প্রধান ভিত্তি। আধুনিক প্রযুক্তি

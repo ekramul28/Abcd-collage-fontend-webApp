@@ -96,7 +96,7 @@ export default function About() {
       </motion.section>
 
       {/* Meet Our Faculty */}
-      <Teachers />
+      {/* <Teachers /> */}
 
       {/* Facilities Section */}
       <motion.section
