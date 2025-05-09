@@ -7,44 +7,46 @@ import Image from "next/image";
 
 const teachers = [
   {
-    name: "Dr. Ayesha Rahman",
-    subject: "Physics",
-    experience: "10 years",
-    image: "https://via.placeholder.com/100x100?text=Ayesha",
+    name: "ড. আয়েশা রহমান",
+    subject: "পদার্থবিজ্ঞান",
+    experience: "১০ বছরের অভিজ্ঞতা",
+    image: "",
   },
   {
-    name: "Mr. Tanvir Hasan",
-    subject: "Mathematics",
-    experience: "8 years",
-    image: "https://via.placeholder.com/100x100?text=Tanvir",
+    name: "জনাব তানভীর হাসান",
+    subject: "গণিত",
+    experience: "৮ বছরের অভিজ্ঞতা",
+    image: "",
   },
   {
-    name: "Mrs. Laila Chowdhury",
-    subject: "English",
-    experience: "12 years",
-    image: "https://via.placeholder.com/100x100?text=Laila",
+    name: "মিসেস লায়লা চৌধুরী",
+    subject: "ইংরেজি",
+    experience: "১২ বছরের অভিজ্ঞতা",
+    image: "",
   },
   {
-    name: "Md. Fahim Ahmed",
-    subject: "Computer Science",
-    experience: "5 years",
-    image: "https://via.placeholder.com/100x100?text=Fahim",
+    name: "মো. ফাহিম আহমেদ",
+    subject: "কম্পিউটার বিজ্ঞান",
+    experience: "৫ বছরের অভিজ্ঞতা",
+    image: "",
   },
 ];
 
 export default function AboutUs() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 space-y-10">
-      {/* Banner */}
+    <div className="container mx-auto px-4 py-12 space-y-10">
+      {/* ব্যানার */}
       <div>
-        <img
-          src="https://via.placeholder.com/1200x300?text=Sunrise+College+Banner"
-          alt="College Banner"
-          className="w-full h-64 object-cover rounded-xl shadow"
+        <Image
+          src="/assets/images/aboutBanner.jpeg"
+          height={200}
+          width={200}
+          alt="ব্যানার"
+          className="w-full h-40 object-cover"
         />
       </div>
 
-      {/* College History */}
+      {/* কলেজ ইতিহাস */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,20 +55,20 @@ export default function AboutUs() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>📜 College History</CardTitle>
+            <CardTitle>📜 আমাদের কলেজের ইতিহাস</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              Sunrise College, founded in 1995, has become a beacon of academic
-              excellence. With over 12 departments and thousands of alumni, we
-              continue to nurture future leaders with a focus on integrity and
-              innovation.
+              সানরাইজ কলেজ ১৯৯৫ সালে প্রতিষ্ঠিত হয় এবং তখন থেকেই একাডেমিক
+              উৎকর্ষতার প্রতীক হিসেবে কাজ করছে। আমাদের রয়েছে ১২টিরও বেশি বিভাগ
+              এবং হাজার হাজার প্রাক্তন শিক্ষার্থী যারা বিভিন্ন ক্ষেত্রে সফলভাবে
+              প্রতিষ্ঠিত।
             </p>
           </CardContent>
         </Card>
       </motion.section>
 
-      {/* Principal Message */}
+      {/* প্রিন্সিপালের বার্তা */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -75,11 +77,11 @@ export default function AboutUs() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>🎓 Principals Message</CardTitle>
+            <CardTitle>🎓 প্রিন্সিপালের বার্তা</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4 items-center">
             <Image
-              src=""
+              src="/assets/images/principal.jpeg"
               alt="Principal"
               height={200}
               width={200}
@@ -87,19 +89,19 @@ export default function AboutUs() {
             />
             <div>
               <p>
-                "Our goal is to offer holistic education that fosters critical
-                thinking, creativity, and compassion. We believe in empowering
-                our students to lead change."
+                “আমরা শিক্ষার্থীদের সমগ্র বিকাশে বিশ্বাস করি—সমালোচনামূলক
+                চিন্তা, সৃজনশীলতা এবং মানবিক গুণাবলির বিকাশ ঘটিয়ে তাদের
+                নেতৃত্বের উপযোগী করে গড়ে তুলি।”
               </p>
               <p className="mt-2 font-semibold">
-                — Prof. Dr. Mahmudul Islam, Principal
+                — অধ্যাপক ড. মাহমুদুল ইসলাম, প্রিন্সিপাল
               </p>
             </div>
           </CardContent>
         </Card>
       </motion.section>
 
-      {/* Faculty Overview */}
+      {/* শিক্ষক পর্যালোচনা */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -108,20 +110,19 @@ export default function AboutUs() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>👩‍🏫 Faculty Overview</CardTitle>
+            <CardTitle>👩‍🏫 শিক্ষক পর্যালোচনা</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              Our faculty members are highly qualified professionals with years
-              of academic and industry experience. From core subjects to
-              emerging fields, they ensure students receive a well-rounded
-              education.
+              আমাদের শিক্ষকগণ অত্যন্ত অভিজ্ঞ ও যোগ্য। তাঁরা একাডেমিক ও বাস্তব
+              জ্ঞানে পারদর্শী এবং শিক্ষার্থীদের একটি ভারসাম্যপূর্ণ ও মানসম্মত
+              শিক্ষা প্রদানের লক্ষ্যে সর্বদা নিয়োজিত।
             </p>
           </CardContent>
         </Card>
       </motion.section>
 
-      {/* Teachers List */}
+      {/* শিক্ষক তালিকা */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -130,14 +131,16 @@ export default function AboutUs() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>📚 Our Teachers</CardTitle>
+            <CardTitle>📚 আমাদের শিক্ষকবৃন্দ</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
               {teachers.map((teacher, idx) => (
                 <Card key={idx} className="border-muted shadow-sm">
                   <CardHeader className="flex flex-row items-center gap-4">
-                    <img
+                    <Image
+                      height={400}
+                      width={400}
                       src={teacher.image}
                       alt={teacher.name}
                       className="w-16 h-16 object-cover rounded-full border"
@@ -145,8 +148,8 @@ export default function AboutUs() {
                     <CardTitle>{teacher.name}</CardTitle>
                   </CardHeader>
                   <CardContent className="text-sm text-muted-foreground">
-                    <p>Subject: {teacher.subject}</p>
-                    <p>Experience: {teacher.experience}</p>
+                    <p>বিষয়: {teacher.subject}</p>
+                    <p>অভিজ্ঞতা: {teacher.experience}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -155,7 +158,7 @@ export default function AboutUs() {
         </Card>
       </motion.section>
 
-      {/* Infrastructure */}
+      {/* অবকাঠামো */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -164,13 +167,14 @@ export default function AboutUs() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>🏫 Infrastructure</CardTitle>
+            <CardTitle>🏫 অবকাঠামো</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              The college campus is equipped with modern classrooms, digital
-              labs, a vast library, and recreational facilities. A digital-first
-              approach ensures a seamless academic experience.
+              আমাদের কলেজ ক্যাম্পাসে রয়েছে আধুনিক শ্রেণিকক্ষ, ডিজিটাল ল্যাব,
+              সমৃদ্ধ লাইব্রেরি ও বিনোদনমূলক সুবিধা। ডিজিটাল-প্রথম নীতিতে আমরা
+              শিক্ষার্থীদের জন্য একটি মসৃণ ও প্রযুক্তিনির্ভর শিক্ষার পরিবেশ
+              নিশ্চিত করি।
             </p>
           </CardContent>
         </Card>

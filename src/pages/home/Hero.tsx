@@ -93,12 +93,12 @@ const Hero = () => {
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src="/assets/videos/abcdvideo1.mp4" type="video/mp4" />
+          <source src="/assets/videos/Abcdvideo1(3).mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 dark:from-black/50 dark:to-black/80 z-10 pointer-events-none"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 dark:from-black/50 dark:to-black/80 z-10 pointer-events-none"></div> */}
       </div>
 
       {/* Hero Content */}

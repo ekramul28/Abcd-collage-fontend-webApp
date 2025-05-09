@@ -98,8 +98,10 @@ const CollegeCalendarSection = () => {
 
   return (
     <section className="px-4 py-10">
-      <h2 className="text-3xl font-bold mb-6 text-center">কলেজ ক্যালেন্ডার</h2>
-      <div className="max-w-5xl mx-auto shadow-lg rounded-lg p-4 bg-white">
+      <h2 className="text-3xl font-bold mb-6 text-center text-white">
+        কলেজ ক্যালেন্ডার
+      </h2>
+      <div className="max-w-5xl mx-auto shadow-lg rounded-lg p-4 bg-white dark:bg-black">
         <Calendar
           localizer={localizer}
           events={events}

@@ -59,7 +59,7 @@ export default function ContactPage() {
       >
         <h2 className="text-2xl font-bold">Get In Touch With Us</h2>
         <p className="mt-2">
-          We'd love to hear from you. Feel free to reach out for any queries.
+          Wed love to hear from you. Feel free to reach out for any queries.
         </p>
       </motion.div>
 
