@@ -9,7 +9,6 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-// Notices with PDF URLs
 const notices = [
   {
     title: "নতুন সেমিস্টার সময়সূচি প্রকাশিত হয়েছে",
@@ -43,14 +42,14 @@ const notices = [
 
 const NoticeBoard = () => {
   return (
-    <section className="py-12 bg-background">
+    <section className="py-12 bg-background dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-10 text-primary"
+          className="text-3xl sm:text-4xl font-bold text-center mb-10 text-primary dark:text-white"
         >
           সর্বশেষ নোটিশ
         </motion.h2>
@@ -65,19 +64,19 @@ const NoticeBoard = () => {
           {notices.map((notice, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-shadow duration-300 border"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-shadow duration-300 border border-gray-200 dark:border-gray-700"
             >
-              <h3 className="text-xl font-semibold text-primary mb-2">
+              <h3 className="text-xl font-semibold text-primary dark:text-white mb-2">
                 {notice.title}
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground dark:text-gray-300 mb-4">
                 {notice.description}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <a
                   href={notice.link}
-                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition"
+                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition"
                 >
                   বিস্তারিত দেখুন
                   <ChevronRight className="h-4 w-4 ml-1" />
@@ -88,7 +87,7 @@ const NoticeBoard = () => {
                     href={notice.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md text-gray-800 border"
+                    className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600"
                   >
                     PDF দেখুন
                   </a>
