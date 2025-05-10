@@ -56,9 +56,10 @@ export default function About() {
         <h1 className="text-5xl font-bold tracking-tight">
           স্বাগতম এ.বি.সি.ডি কলেজে
         </h1>
+        <h1 className="text-2xl font-bold tracking-wide">মানুষ গড়ার কারিগর</h1>
         <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
           ২০০০ সাল থেকে যশোরের চৌগাছা অঞ্চলে শিক্ষার মানোন্নয়নে ও একাডেমিক
-          উৎকর্ষতায় নিরলসভাবে কাজ করে যাচ্ছে ABCD কলেজ।
+          উৎকর্ষতায় নিরলসভাবে কাজ করে যাচ্ছে এ.বি.সি.ডি কলেজ।
         </p>
       </motion.section>
 

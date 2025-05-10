@@ -17,7 +17,7 @@ const CTASection = () => {
         backgroundImage: "url('/path-to-your-college-background.jpg')", // Replace with your college-related image path
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-neutral-800"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.h2
@@ -48,7 +48,10 @@ const CTASection = () => {
             viewport={{ once: true }}
             className="flex justify-center gap-4"
           >
-            <Button size="lg" className="px-6 py-3 text-lg sm:text-xl">
+            <Button
+              size="lg"
+              className="px-6 py-3 text-lg bg-[#6D28D9] text-white sm:text-xl"
+            >
               এখনই ভর্তি হতে আবেদন করুন
             </Button>
 

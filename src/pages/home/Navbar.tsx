@@ -96,7 +96,7 @@ export default function Navbar() {
                         variant={
                           pathname?.startsWith(item.href) ? "default" : "ghost"
                         }
-                        className="flex items-center"
+                        className="flex items-center bg-[#6D28D9]"
                       >
                         {item.icon}
                         {item.name}
@@ -172,9 +172,12 @@ export default function Navbar() {
                   <Button
                     key={item.name}
                     variant={pathname === item.href ? "default" : "ghost"}
+                    className={
+                      pathname === item.href ? "bg-[#6D28D9] text-white" : ""
+                    }
                     asChild
                   >
-                    <Link href={item.href} className="flex items-center">
+                    <Link href={item.href} className="flex items-center ">
                       {item.icon}
                       {item.name}
                     </Link>
@@ -189,7 +192,7 @@ export default function Navbar() {
             </div>
 
             <Link href={"/login"}>
-              <Button>Login</Button>
+              <Button className="bg-[#6D28D9] text-white">Login</Button>
             </Link>
 
             {/* User dropdown */}

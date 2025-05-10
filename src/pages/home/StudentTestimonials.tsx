@@ -1,8 +1,10 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -47,6 +49,34 @@ const testimonials = [
       "জাভাস্ক্রিপ্টের ভীতটা এখান থেকেই গড়ে উঠেছে। এখন আমি ওয়েব ডেভেলপমেন্ট নিয়ে আত্মবিশ্বাসী। সুমিত ভাইয়ের গাইডলাইন ও কনটেন্টের মান এক কথায় দুর্দান্ত! প্রতিটি লেকচার খুব সুন্দরভাবে গঠিত সুমিত ভাইয়ের গাইডলাইন ও কনটেন্টের মান এক কথায় দুর্দান্ত! প্রতিটি লেকচার খুব সুন্দরভাবে গঠিত",
     image: "/testimonials/jubayer.jpg",
   },
+  {
+    name: "আরিফা রহমান",
+    college: "জাহাঙ্গীরনগর বিশ্ববিদ্যালয়",
+    message:
+      "এখানে আমি নতুন কিছু শিখেছি, যা আমি আগে জানতাম না। সুমিত ভাইয়ের উপস্থাপনা সত্যিই খুব ভালো।",
+    image: "/testimonials/arifa.jpg",
+  },
+  {
+    name: "মাহমুদুল হাসান",
+    college: "ইস্টার্ন ইউনিভার্সিটি",
+    message:
+      "আমার প্রোগ্রামিং দক্ষতা উন্নত হয়েছে এই প্ল্যাটফর্মের মাধ্যমে। সুমিত ভাইয়ের পড়ানোর ধরন খুবই ভাল।",
+    image: "/testimonials/mahmudul.jpg",
+  },
+  {
+    name: "নুসরাত জাহান",
+    college: "ঢাকা বিশ্ববিদ্যালয়",
+    message:
+      "আমি এখানে যে কোর্সগুলি করেছি, তা আমার ক্যারিয়ারে অনেক সাহায্য করেছে। সুমিত ভাইয়ের পাঠদানে সহজবোধ্য এবং প্রাঞ্জল।",
+    image: "/testimonials/nusrat.jpg",
+  },
+  {
+    name: "মোহাম্মদ নাহিদ",
+    college: "শাহজালাল বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়",
+    message:
+      "এই প্ল্যাটফর্মের মাধ্যমে আমি অনেক কিছু শিখেছি। সুমিত ভাইয়ের কনটেন্ট এক কথায় দুর্দান্ত।",
+    image: "/testimonials/nahid.jpg",
+  },
 ];
 
 const fadeInUp = {
@@ -55,6 +85,12 @@ const fadeInUp = {
 };
 
 const StudentTestimonials = () => {
+  const [visibleTestimonials, setVisibleTestimonials] = useState(9);
+
+  const handleLoadMore = () => {
+    setVisibleTestimonials(testimonials.length);
+  };
+
   return (
     <section className="py-16 bg-background dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +101,7 @@ const StudentTestimonials = () => {
           viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold text-center text-primary dark:text-white mb-4"
         >
-          স্টুডেন্টদের মতামত
+          এবিসিডি কলেজের সম্পর্কে শিক্ষার্থীদের মতামত
         </motion.h2>
 
         <motion.p
@@ -75,12 +111,12 @@ const StudentTestimonials = () => {
           viewport={{ once: true }}
           className="text-center text-muted-foreground dark:text-gray-300 text-base mb-12"
         >
-          এবিসিডি কলেজের সম্পর্কে শিক্ষার্থীদের মতামত
+          শিক্ষার্থীরা সর্বদাই এবিসিডি প্রতি তাদের ভালবাসা প্রকাশ করেছেন
         </motion.p>
 
         {/* Using CSS Columns instead of grid */}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-8">
-          {testimonials.map((item, index) => (
+          {testimonials.slice(0, visibleTestimonials).map((item, index) => (
             <motion.div
               key={index}
               variants={fadeInUp}
@@ -107,7 +143,7 @@ const StudentTestimonials = () => {
                 </div>
               </div>
 
-              <Quote className="h-6 w-6 mt-2 text-blue-500 mb-4" />
+              <Quote className="h-6 w-6 mt-2 text-[#6D28D9] mb-4" />
 
               <p className="text-sm text-gray-700 dark:text-gray-300 flex-1 mb-4">
                 {item.message}
@@ -115,6 +151,18 @@ const StudentTestimonials = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Load More Button */}
+        {visibleTestimonials < testimonials.length && (
+          <div className="text-center mt-8">
+            <Button
+              onClick={handleLoadMore}
+              className="bg-[#6D28D9] text-white transition duration-300"
+            >
+              আরও মন্তব্য দেখুন
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

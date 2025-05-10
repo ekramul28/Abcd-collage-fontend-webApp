@@ -11,14 +11,14 @@ const newsItems = [
 function LatestNewsSection() {
   return (
     <div className="fixed bottom-0 w-full bg-gray-100 z-50">
-      <div className="overflow-hidden whitespace-nowrap py-2 mx-auto max-w-7xl">
+      <div className="overflow-hidden whitespace-nowrap py-2 mx-auto ">
         <motion.div
           animate={{ x: ["100%", "-100%"] }}
           transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
           className="inline-block"
         >
           {newsItems.map((item, idx) => (
-            <span key={idx} className="mx-8 text-sm font-medium text-gray-700">
+            <span key={idx} className="mx-8 text-sm font-medium text-red-800">
               {item}
             </span>
           ))}

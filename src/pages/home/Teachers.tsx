@@ -133,7 +133,7 @@ export default function TeachersGridView() {
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
                 {teacher.name}
               </h3>
-              <p className="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full dark:bg-blue-800 dark:text-white mb-4">
+              <p className="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-[#6D28D9] rounded-full dark:bg-blue-800 dark:text-white mb-4">
                 {teacher.subject}
               </p>
 
@@ -143,14 +143,14 @@ export default function TeachersGridView() {
                   className="hover:bg-blue-100 p-2 rounded-full transition"
                   title="Email"
                 >
-                  <Mail className="h-5 w-5 text-blue-500" />
+                  <Mail className="h-5 w-5 text-[#6D28D9]" />
                 </a>
                 <a
                   href={`tel:${teacher.phone}`}
                   className="hover:bg-green-100 p-2 rounded-full transition"
                   title="Call"
                 >
-                  <Phone className="h-5 w-5 text-green-600" />
+                  <Phone className="h-5 w-5 text-[#6D28D9]" />
                 </a>
                 <a
                   href={teacher.facebook}
@@ -159,7 +159,7 @@ export default function TeachersGridView() {
                   className="hover:bg-blue-100 p-2 rounded-full transition"
                   title="Facebook"
                 >
-                  <Facebook className="h-5 w-5 text-blue-700" />
+                  <Facebook className="h-5 w-5 text-[#6D28D9]" />
                 </a>
               </div>
             </div>
@@ -175,7 +175,7 @@ export default function TeachersGridView() {
         >
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-2 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+            className="px-6 py-2 rounded-full bg-[#6D28D9] text-white font-medium hover:bg-blue-700 transition"
           >
             {showAll ? "কম দেখান" : "সব দেখান"}
           </button>

@@ -76,7 +76,7 @@ const NoticeBoard = () => {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <a
                   href={notice.link}
-                  className="flex items-center text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition"
+                  className="flex items-center text-sm text-[#6D28D9] hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition"
                 >
                   বিস্তারিত দেখুন
                   <ChevronRight className="h-4 w-4 ml-1" />
@@ -94,7 +94,7 @@ const NoticeBoard = () => {
                   <a
                     href={notice.pdfUrl}
                     download
-                    className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                    className="text-sm bg-[#6D28D9] hover:bg-blue-700 text-white px-4 py-2 rounded-md"
                   >
                     ডাউনলোড করুন
                   </a>

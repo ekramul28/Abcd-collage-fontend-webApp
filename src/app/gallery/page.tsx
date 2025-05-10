@@ -12,136 +12,53 @@ export default function GallerySection() {
   const galleryItems = [
     {
       id: 1,
-      category: "car-wraps",
-      title: "Matte Black BMW",
-      description: "Full vehicle color change wrap",
-      image: "/images/erik-mclean-akfhYyWvfZo-unsplash.jpg",
+      category: "science",
+      title: "বিজ্ঞান প্রদর্শনী",
+      description: "নবীনদের জন্য বৈজ্ঞানিক প্রকল্প",
+      image: "/images/science.jpg",
       height: 300,
     },
     {
       id: 2,
-      category: "car-wraps",
-      title: "Custom Design Wrap",
-      description: "Artistic custom wrap design",
-      image: "/images/alif-W0dbt27T2bo-unsplash.jpg",
-      height: 400,
+      category: "cultural",
+      title: "সংস্কৃতিক সন্ধ্যা",
+      description: "সাংস্কৃতিক অনুষ্ঠানে শিক্ষার্থীদের পরিবেশনা",
+      image: "/images/cultural.jpg",
+      height: 350,
     },
     {
       id: 3,
-      category: "fleet-wraps",
-      title: "Business Fleet",
-      description: "Branded fleet vehicle wraps",
-      image: "/images/Business-Fleet.jpg",
-      height: 350,
+      category: "sports",
+      title: "খেলা প্রতিযোগিতা",
+      description: "আন্তঃবিভাগীয় ফুটবল টুর্নামেন্ট",
+      image: "/images/sports.jpg",
+      height: 320,
     },
     {
       id: 4,
-      category: "advertising",
-      title: "Promotional Wrap",
-      description: "Advertising vehicle wrap",
-      image: "/images/Advertising Wraps8.jpg",
-      height: 280,
+      category: "seminar",
+      title: "সেমিনার",
+      description: "উচ্চশিক্ষা ও ক্যারিয়ার নিয়ে আলোচনা",
+      image: "/images/seminar.jpg",
+      height: 300,
     },
     {
       id: 5,
-      category: "roof-bonnet",
-      title: "Roof & Bonnet",
-      description: "Custom roof and bonnet wrap",
-      image: "/images/Roof & Bonnet7.jpg",
-      height: 320,
-    },
-    {
-      id: 6,
-      category: "truck-wraps",
-      title: "Commercial Truck",
-      description: "Full commercial truck wrap",
-      image: "/images/pexels-bechir-lachiheb-2148044404-29897103.jpg",
-      height: 380,
-    },
-    {
-      id: 7,
-      category: "paint-protection",
-      title: "Paint Protection",
-      description: "Premium paint protection film",
-      image: "/images/Paint Protection8.jpg",
-      height: 300,
-    },
-    {
-      id: 8,
-      category: "car-wraps",
-      title: "Sports Car Wrap",
-      description: "Performance vehicle custom wrap",
-      image: "/images/erik-mclean-akfhYyWvfZo-unsplash.jpg",
-      height: 340,
-    },
-
-    // truck-wraps
-    {
-      id: 9,
-      category: "truck-wraps",
-      title: "Matte Black Truck",
-      description: "Stealth look with matte finish wrap",
-      image: "/images/truck1.jpg",
-      height: 300,
-    },
-    {
-      id: 10,
-      category: "truck-wraps",
-      title: "Artistic Truck Wrap",
-      description: "Creative custom design for trucks",
-      image: "/images/truck2.jpg",
-      height: 400,
-    },
-    {
-      id: 11,
-      category: "truck-wraps",
-      title: "Fleet Truck Branding",
-      description: "Professional fleet truck graphics",
-      image: "/images/truck3.jpg",
-      height: 350,
-    },
-    {
-      id: 12,
-      category: "truck-wraps",
-      title: "Ad Wrap for Trucks",
-      description: "Truck advertising for promotions",
-      image: "/images/truck4.jpg",
-      height: 280,
-    },
-    {
-      id: 13,
-      category: "truck-wraps",
-      title: "Roof and Hood Wrap",
-      description: "Truck roof and bonnet customization",
-      image: "/images/truck5.jpg",
-      height: 320,
-    },
-
-    {
-      id: 14,
-      category: "truck-wraps",
-      title: "Protective Wrap",
-      description: "Durable protection film for trucks",
-      image: "/images/truck6.jpg",
-      height: 300,
-    },
-    {
-      id: 15,
-      category: "truck-wraps",
-      title: "Sport Truck Design",
-      description: "Bold and sleek performance wrap",
-      image: "/images/truck7.jpg",
+      category: "campus-life",
+      title: "ক্যাম্পাস জীবন",
+      description: "ABCD কলেজের মনোরম পরিবেশ",
+      image: "/images/campus.jpg",
       height: 340,
     },
   ];
 
   const filters = [
-    { id: "all", label: "All Projects" },
-    { id: "car-wraps", label: "Car Wraps" },
-    { id: "advertising", label: "Advertising Wraps" },
-    { id: "roof-bonnet", label: "Roof & Bonnet" },
-    { id: "truck-wraps", label: "Truck Wraps" },
-    { id: "paint-protection", label: "Paint Protection" },
+    { id: "all", label: "সব ছবি" },
+    { id: "science", label: "কলেজ" },
+    { id: "cultural", label: "সংস্কৃতি" },
+    { id: "sports", label: "খেলা" },
+    { id: "seminar", label: "সেমিনার" },
+    { id: "campus-life", label: "ক্যাম্পাস জীবন" },
   ];
 
   useEffect(() => {
@@ -190,18 +107,18 @@ export default function GallerySection() {
         `}
       </style>
 
-      <div className=" ">
+      <div>
         {/* Header */}
         <div
           className={`text-center mb-8 md:mb-8 transition-all duration-700 ${
             visibleSection ? "opacity-100" : "opacity-0 translate-y-10"
           }`}
         >
-          <span className="inline-block px-4 py-1 bg-[#F96C26] bg-opacity-20 text-[#F96C26] rounded-full text-sm font-medium mt-3">
-            Our Work
+          <span className="inline-block px-4 py-1 bg-[#6D28D9] bg-opacity-20 text-white rounded-full text-sm font-medium mt-3">
+            আমাদের কার্যক্রম
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-6">
-            Featured <span className="text-[#F96C26]">Projects</span>
+          <h2 className="text-2xl md:text-3xl text-black dark:text-white lg:text-4xl font-bold mt-6">
+            নির্বাচিত <span className="text-[#6D28D9]">ছবিসমূহ</span>
           </h2>
         </div>
 
@@ -211,16 +128,15 @@ export default function GallerySection() {
             visibleSection ? "opacity-100" : "opacity-0 translate-y-10"
           }`}
         >
-          {filters.map((filter, index) => (
+          {filters.map((filter) => (
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
               className={`px-4 py-2 rounded-xl text-sm md:text-base transition-all ${
                 activeFilter === filter.id
-                  ? "bg-[#F96C26] text-white"
+                  ? "bg-[#6D28D9] text-white"
                   : "bg-gray-800 text-gray-300 hover:bg-gray-700"
               }`}
-              // style={{ transitionDelay: `${index * 50}ms` }}
             >
               {filter.label}
             </button>
@@ -229,7 +145,7 @@ export default function GallerySection() {
 
         {/* Gallery */}
         <div
-          className={`columns-4 gap-0  transition-all duration-700 delay-500 ${
+          className={`columns-4 gap-0 transition-all duration-700 delay-500 ${
             visibleSection ? "opacity-100" : "opacity-0"
           }`}
         >

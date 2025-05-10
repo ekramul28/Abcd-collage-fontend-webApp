@@ -176,7 +176,9 @@ const Footer = () => {
                 placeholder="আপনার ইমেইল লিখুন"
                 className="bg-background"
               />
-              <Button className="w-full">সাবস্ক্রাইব</Button>
+              <Button className="w-full bg-[#6D28D9] text-white">
+                সাবস্ক্রাইব
+              </Button>
             </div>
 
             <div className="pt-4">
@@ -195,7 +197,7 @@ const Footer = () => {
       </div>
 
       {/* নিচের ফুটার অংশ */}
-      <div className="border-t">
+      <div className="border-t pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
